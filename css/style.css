@@ -1,0 +1,223 @@
+/* Atemtrio – Stylesheet */
+  :root {
+    --nebel: #F7F5EE;
+    --flaeche: #FFFEFA;
+    --wald: #233A2C;
+    --moos: #2F6B45;
+    --daemmerung: #E2B33C;
+    --himmel: #F1E8C9;
+    --linie: #E2DCC6;
+    --text: var(--wald);
+    --text-leise: #55665A;
+    --kreis-a: rgba(47,107,69,.50);
+    --kreis-b: rgba(226,179,60,.50);
+    --kreis-c: rgba(150,180,110,.50);
+    /* Grüne Bänder (Auftakt und Kontakt) */
+    --band: #233A2C;
+    --band-text: #F7F5EE;
+    --band-leise: #C9D5C8;
+    --sonne: #E2B33C;
+    --sonne-hell: #F0C95E;
+    --sonne-text: #233A2C;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px)); }
+  body {
+    margin: 0;
+    background: var(--nebel);
+    color: var(--text);
+    font: 400 1.0625rem/1.65 "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Spectral", Georgia, "Times New Roman", serif; font-weight: 300; line-height: 1.15; margin: 0; }
+  a { color: var(--moos); text-underline-offset: .2em; }
+  a:hover { color: var(--wald); }
+  :focus-visible { outline: 2px solid var(--daemmerung); outline-offset: 3px; border-radius: 2px; }
+  img { max-width: 100%; display: block; }
+  .huelle { width: min(68rem, 100% - 3rem); margin-inline: auto; }
+
+  /* Navigation */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--nebel); }
+  .kopf {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    background: color-mix(in srgb, var(--nebel) 88%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--linie);
+  }
+  .kopf .huelle { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
+  .marke { font-family: "Quicksand", "Nunito", system-ui, sans-serif; font-weight: 500; font-size: 1.3rem; letter-spacing: .04em; text-decoration: none; color: var(--text); }
+  .willkommen { display: block; font-family: "Spectral", Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(1.15rem, 2.2vw, 1.45rem); letter-spacing: 0; color: var(--band-leise); margin-bottom: .6rem; }
+  .wortmarke { display: block; font-family: "Quicksand", "Nunito", system-ui, sans-serif; font-weight: 400; font-size: clamp(3rem, 8vw, 5.75rem); letter-spacing: .06em; line-height: 1.05; white-space: nowrap; }
+  .kopf nav { display: flex; gap: clamp(.75rem, 3vw, 2rem); flex-wrap: wrap; }
+  .kopf nav a { color: var(--text-leise); text-decoration: none; font-weight: 500; font-size: .95rem; }
+  .kopf nav a:hover { color: var(--text); }
+
+  .sprachen { display: flex; gap: .15rem; }
+  .sprachen button {
+    font: 600 .8rem/1 "Figtree", system-ui, sans-serif; letter-spacing: .03em;
+    background: none; color: var(--text-leise); cursor: pointer;
+    border: 1px solid transparent; border-radius: 999px; padding: .35rem .5rem;
+  }
+  .sprachen button:hover { color: var(--text); }
+  .sprachen button[aria-pressed="true"] { color: var(--text); border-color: var(--moos); }
+  .kopf .huelle { flex-wrap: wrap; row-gap: .25rem; padding-block: .5rem; }
+
+  /* Hero */
+  .hero { padding: clamp(3rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4rem); }
+  .hero .huelle { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 2rem; }
+  .hero h1 { font-size: clamp(2.6rem, 6.5vw, 4.75rem); letter-spacing: -.01em; }
+  .hero .unterzeile { font-family: "Spectral", Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(1.25rem, 2.4vw, 1.6rem); color: var(--text-leise); margin: 1.25rem 0 0; max-width: 28ch; }
+  .hero-visual { display: grid; place-items: center; justify-self: center; width: 100%; max-width: 23rem; }
+  .hero-visual > * { grid-area: 1 / 1; }
+  .hero-visual img { width: 84%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 1.25rem; box-shadow: 0 1.5rem 3rem -1.5rem rgba(34,53,47,.45); position: relative; }
+  .atem { width: 100%; }
+  .knopf {
+    display: inline-block; margin-top: 2rem; padding: .85rem 1.6rem;
+    background: var(--moos); color: var(--flaeche); border-radius: 999px;
+    font-weight: 600; text-decoration: none; transition: background-color .2s;
+  }
+  .knopf:hover { background: var(--wald); color: var(--nebel); }
+  .knopf-zeile { margin-top: 2.5rem; }
+  .knopf-zeile .knopf { margin-top: 0; }
+  .knopf-zeile span { margin-left: 1rem; color: var(--text-leise); }
+  .atem circle { transform-box: fill-box; transform-origin: center; animation: atmen 10s ease-in-out infinite; mix-blend-mode: multiply; }
+  .atem circle:nth-child(2) { animation-delay: -3.3s; }
+  .atem circle:nth-child(3) { animation-delay: -6.6s; }
+  @keyframes atmen { 0%, 100% { transform: scale(.86); } 45% { transform: scale(1.08); } 55% { transform: scale(1.08); } }
+  @media (prefers-reduced-motion: reduce) { .atem circle { animation: none; } html { scroll-behavior: auto; } }
+
+
+  /* Abschnitte */
+  section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  section + section { border-top: 1px solid var(--linie); }
+  h2 { font-size: clamp(2rem, 4vw, 2.9rem); margin-bottom: 1.5rem; }
+  .einleitung { max-width: 38rem; color: var(--text-leise); margin: 0; }
+
+  .vision { max-width: none; margin: 0 0 3.5rem; }
+  #angebot .einleitung { max-width: none; }
+  .vision h3 { font-size: 1.4rem; margin-bottom: .6rem; }
+  .vision p { font-family: "Spectral", Georgia, serif; font-weight: 300; font-size: 1.3rem; line-height: 1.6; margin: 0; }
+
+  .module { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .modul { background: var(--flaeche); border-radius: 1rem; padding: 1.75rem 1.5rem 1.6rem; border: 1px solid var(--linie); }
+  .modul h3 { font-size: 1.75rem; font-style: italic; }
+  .modul .dauer { display: block; margin-top: .75rem; font-size: 1.05rem; font-weight: 500; color: var(--moos); }
+  .modul p { margin: .4rem 0 0; color: var(--text-leise); font-size: .97rem; }
+  .modul:nth-child(1) { border-top: 4px solid var(--kreis-c); }
+  .modul:nth-child(2) { border-top: 4px solid var(--kreis-b); }
+  .modul:nth-child(3) { border-top: 4px solid var(--kreis-a); }
+
+  /* Referenzen */
+  .zeitachse { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+  .zeitachse > li { display: grid; grid-template-columns: 6rem 1fr; gap: 1.5rem; padding: 1.75rem 0; border-top: 1px solid var(--linie); }
+  .zeitachse > li:first-child { border-top: 0; padding-top: 0; }
+  .jahr { font-family: "Spectral", Georgia, serif; font-size: 2rem; line-height: 1; color: var(--moos); }
+  .zeitachse h3 { font-family: "Figtree", system-ui, sans-serif; font-weight: 600; font-size: 1.1rem; line-height: 1.4; }
+  .zeitachse .ort { color: var(--text-leise); margin: .2rem 0 .6rem; }
+  .zeitachse .titel { font-family: "Spectral", Georgia, serif; font-style: italic; font-size: 1.2rem; margin: 0; }
+  .zeitachse p { margin: .25rem 0 0; max-width: 40rem; }
+  .zeitachse .link { margin-top: .6rem; font-size: .95rem; }
+
+  /* Über uns */
+  .zwei-spalten { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+  .zwei-spalten h3 { font-size: 1.5rem; margin-bottom: .75rem; }
+  .zwei-spalten ul { margin: 0; padding-left: 1.1rem; }
+  .zwei-spalten li { margin-bottom: .5rem; }
+  .zwei-spalten li::marker { color: var(--moos); }
+
+  .frauen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
+  .frau { background: var(--flaeche); border: 1px solid var(--linie); border-radius: 1rem; padding: 1.6rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; }
+  .frau h3 { font-size: 1.6rem; }
+  .frau .rolle { margin: 0; font-size: .97rem; }
+  .frau .praxis { margin: 0; color: var(--text-leise); font-size: .97rem; }
+  .frau .kontakt { margin-top: auto; padding-top: .75rem; font-size: .97rem; display: flex; flex-direction: column; gap: .15rem; }
+
+  .modul, .frau { min-width: 0; overflow-wrap: break-word; }
+  .frau-fuss { flex-wrap: wrap; margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+  .frau-fuss .kontakt { margin-top: 0; }
+  .praxis-logo { width: auto; max-width: 5.5rem; max-height: 3.5rem; object-fit: contain; flex-shrink: 0; }
+
+  /* Fusszeile */
+  .fuss { background: var(--himmel); padding: clamp(4rem, 9vw, 6.5rem) 0 2.5rem; }
+  .einladung { display: grid; grid-template-columns: auto 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; max-width: 50rem; }
+  .atem-klein { width: clamp(4.5rem, 10vw, 6.5rem); }
+  .atem-klein circle { transform-box: fill-box; transform-origin: center; animation: atmen 10s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .atem-klein circle { animation: none; } }
+  .fuss h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0 0 1rem; }
+  .fuss .einladung p { margin: 0; max-width: 36rem; }
+  .kontakt-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.75rem; }
+  .kontakt-zeile .knopf { margin-top: 0; }
+  .fuss .mail { font-size: 1.1rem; font-weight: 500; }
+  .fuss .einladung .tipp { margin-top: 2.5rem; font-size: .95rem; font-style: italic; color: var(--text-leise); }
+  .fuss .impressum { display: block; margin-top: clamp(3rem, 7vw, 4.5rem); padding-top: 1.25rem; border-top: 1px solid var(--linie); color: var(--text-leise); }
+  @media (max-width: 30rem) { .einladung { grid-template-columns: 1fr; } }
+
+  /* Version 2: grüner Auftakt und Abschluss */
+  .hero { background: var(--band); color: var(--band-text); }
+  .hero .unterzeile { color: #D9E2D6; }
+  .hero {
+    --kreis-a: rgba(120,170,130,.55);
+    --kreis-b: rgba(226,179,60,.60);
+    --kreis-c: rgba(190,210,150,.45);
+  }
+  .hero .atem circle { mix-blend-mode: screen; }
+  .hero .knopf, .fuss .knopf { background: var(--sonne); color: var(--sonne-text); }
+  .hero .knopf:hover, .fuss .knopf:hover { background: var(--sonne-hell); color: var(--sonne-text); }
+  .hero-visual img { box-shadow: 0 1.5rem 3rem -1.5rem rgba(0,0,0,.6); }
+  .fuss { background: var(--band); color: var(--band-text); --kreis-a: rgba(226,179,60,.65); }
+  .fuss .einladung .tipp, .fuss .impressum { color: var(--band-leise); }
+  .fuss .mail { color: var(--sonne-hell); }
+  .fuss .mail:hover { color: var(--band-text); }
+  .fuss .impressum { border-color: rgba(255,255,255,.15); }
+  .hero :focus-visible, .fuss :focus-visible { outline-color: var(--sonne); }
+
+  /* Tablets hochkant: zweispaltig bleiben, Kreise etwas kleiner */
+  @media (max-width: 52rem) {
+    .hero-visual { max-width: 15rem; }
+    .kopf nav { gap: .9rem; }
+  }
+  /* Telefone: alles untereinander */
+  @media (max-width: 40rem) {
+    .hero .huelle, .zwei-spalten { grid-template-columns: 1fr; }
+    .hero-visual { max-width: 19rem; }
+    .zeitachse > li { grid-template-columns: 1fr; gap: .5rem; }
+    p, li { hyphens: auto; -webkit-hyphens: auto; }
+    .hero p { hyphens: manual; -webkit-hyphens: manual; }
+  }
+  /* Grosse Bildschirme: alles etwas grösser */
+  @media (min-width: 1800px) { html { font-size: 112.5%; } }
+  @media (min-width: 2400px) { html { font-size: 125%; } }
+  /* Touch-Geräte: Links leichter antippbar */
+  @media (pointer: coarse) {
+    .zeitachse .link a, .frau .kontakt a, .fuss .mail { display: inline-block; padding-block: .35rem; }
+    .frau .kontakt { gap: 0; }
+  }
+  @media (max-width: 30rem) {
+    .marke { display: none; }
+    .kopf .huelle { justify-content: center; }
+  }
+
+  /* Einheitliche Schriftgrössen (Typo-Skala) */
+  :root {
+    --fs-h2: clamp(2rem, 4vw, 2.75rem);      /* Abschnittstitel: 32–44 px */
+    --fs-h3: clamp(1.25rem, 2.2vw, 1.5rem);  /* Untertitel: 20–24 px */
+    --fs-text: 1.0625rem;                     /* Fliesstext: 17 px */
+    --fs-klein: .9375rem;                     /* Kleintext: 15 px */
+    --fs-fein: .875rem;                       /* Feinschrift: 14 px */
+  }
+  section h2, .fuss h2 { font-size: var(--fs-h2); line-height: 1.15; }
+  .vision h3, .zwei-spalten h3, .frau h3, .modul h3 { font-size: var(--fs-h3); line-height: 1.25; font-weight: 300; }
+  .zeitachse h3 { font-size: var(--fs-text); }
+  .einleitung, .zeitachse .ort, .zeitachse p, .zwei-spalten p, .zwei-spalten li, .fuss .einladung p, .knopf, .knopf-zeile span { font-size: var(--fs-text); }
+  .kopf nav a, .modul p, .modul .dauer, .frau .rolle, .frau .praxis, .frau .kontakt, .zeitachse .link, .fuss .mail, .fuss .einladung .tipp { font-size: var(--fs-klein); }
+  .fuss .impressum, .sprachen button { font-size: var(--fs-fein); }
+  .zeitachse .titel { font-size: 1.2rem; }
+  .frau:nth-child(1) { border-top: 4px solid var(--kreis-c); }
+  .frau:nth-child(2) { border-top: 4px solid var(--kreis-b); }
+  .frau:nth-child(3) { border-top: 4px solid var(--kreis-a); }
+  .vision p { font-family: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 400; font-size: var(--fs-text); line-height: 1.65; }
+  .willkommen, .hero .unterzeile { font-size: var(--fs-h3); line-height: 1.35; color: #D9E2D6; }
